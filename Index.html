@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AD One — Recupera tu enfoque</title>
+<meta name="description" content="AD One es un sistema híbrido anti-distracción: una caja física que bloquea tu celular sincronizada con una app. Hecho en México." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-profundo: #0a1f44;
+    --azul-noche: #061538;
+    --azul-electrico: #1e5fff;
+    --azul-cielo: #6ea8ff;
+    --hueso: #f4f1ea;
+    --crema: #ebe6db;
+    --tinta: #0d0d12;
+    --acento: #ffd166;
+    --gris-suave: #8a8e99;
+    --borde: rgba(10, 31, 68, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--hueso);
+    color: var(--tinta);
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--azul-electrico); color: var(--hueso); }
+
+  /* ====== BANNER PROMOCIONAL ====== */
+  .promo-banner {
+    background: var(--azul-noche);
+    color: var(--hueso);
+    padding: 10px 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .promo-track {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: scroll-promo 32s linear infinite;
+    width: max-content;
+  }
+  .promo-track span {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .promo-track .dot {
+    width: 6px; height: 6px;
+    background: var(--acento);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .promo-track strong {
+    color: var(--acento);
+    font-weight: 700;
+  }
+  @keyframes scroll-promo {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ====== NAV ====== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(244, 241, 234, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--borde);
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    color: var(--azul-profundo);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .logo-dot {
+    width: 8px; height: 8px;
+    background: var(--azul-electrico);
+    border-radius: 50%;
+    display: inline-block;
+    align-self: center;
+    margin: 0 2px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--tinta);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--azul-electrico); }
+  .nav-cta {
+    background: var(--azul-profundo);
+    color: var(--hueso) !important;
+    padding: 10px 22px;
+    border-radius: 100px;
+    transition: all 0.25s;
+  }
+  .nav-cta:hover {
+    background: var(--azul-electrico);
+    transform: translateY(-1px);
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px 100px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(30, 95, 255, 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--azul-profundo);
+    background: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #2ecc71;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+  }
+  h1.hero-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--azul-profundo);
+    margin-bottom: 28px;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--azul-electrico);
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: #444;
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .btn-primary {
+    background: var(--azul-profundo);
+    color: var(--hueso);
+    padding: 16px 32px;
+    border: none;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-primary:hover {
+    background: var(--azul-electrico);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(30, 95, 255, 0.25);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--azul-profundo);
+    padding: 16px 32px;
+    border: 1.5px solid var(--azul-profundo);
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-secondary:hover {
+    background: var(--azul-profundo);
+    color: var(--hueso);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 50px;
+    padding-top: 40px;
+    border-top: 1px solid var(--borde);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--azul-profundo);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--gris-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+
+  /* Hero Visual - Dispositivo */
+  .hero-visual {
+    position: relative;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .device-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1200px;
+  }
+  .device-box {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotateY(-15deg) rotateX(5deg);
+    width: 320px; height: 380px;
+    background: linear-gradient(135deg, var(--azul-profundo), var(--azul-noche));
+    border-radius: 28px;
+    box-shadow:
+      0 30px 80px rgba(10, 31, 68, 0.4),
+      inset 0 1px 0 rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    color: var(--hueso);
+    overflow: hidden;
+    animation: float-box 6s ease-in-out infinite;
+  }
+  @keyframes float-box {
+    0%, 100% { transform: translate(-50%, -50%) rotateY(-15deg) rotateX(5deg); }
+    50% { transform: translate(-50%, -52%) rotateY(-12deg) rotateX(3deg); }
+  }
+  .device-box::before {
+    content: '';
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 12px; height: 12px;
+    background: var(--acento);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--acento);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .device-screen {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lock-icon {
+    width: 60px; height: 60px;
+    border: 2px solid var(--azul-cielo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .lock-icon svg { width: 28px; height: 28px; }
+  .device-text {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .device-timer {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .device-timer .time {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    color: var(--acento);
+    font-weight: 500;
+  }
+  .device-timer .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+  .device-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+  }
+
+  /* App phone mockup */
+  .device-phone {
+    position: absolute;
+    bottom: 40px; right: 30px;
+    width: 140px; height: 280px;
+    background: var(--tinta);
+    border-radius: 22px;
+    border: 3px solid #1a1a1f;
+    padding: 12px 8px;
+    transform: rotate(8deg);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    animation: float-phone 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+  @keyframes float-phone {
+    0%, 100% { transform: rotate(8deg) translateY(0); }
+    50% { transform: rotate(8deg) translateY(-10px); }
+  }
+  .phone-screen {
+    background: linear-gradient(180deg, var(--azul-electrico), var(--azul-profundo));
+    height: 100%;
+    border-radius: 14px;
+    padding: 16px 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .phone-screen .ph-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .phone-screen .ph-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .phone-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .phone-bar-fill {
+    height: 100%;
+    width: 65%;
+    background: var(--acento);
+    border-radius: 3px;
+  }
+  .phone-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: auto;
+  }
+  .phone-stat {
+    background: rgba(255,255,255,0.08);
+    padding: 8px 6px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .phone-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+  }
+  .phone-stat .lbl {
+    font-size: 0.5rem;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+
+  /* Floating elements */
+  .float-tag {
+    position: absolute;
+    background: white;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(10, 31, 68, 0.12);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--azul-profundo);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .float-tag-1 {
+    top: 12%; left: 5%;
+    animation: float-tag 5s ease-in-out infinite;
+  }
+  .float-tag-2 {
+    bottom: 18%; left: 8%;
+    animation: float-tag 5s ease-in-out infinite;
+    animation-delay: -2.5s;
+  }
+  @keyframes float-tag {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .float-tag .icon {
+    width: 28px; height: 28px;
+    background: var(--azul-electrico);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+  }
+
+  /* ====== SECCIONES GENERALES ====== */
+  section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+  .section-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--azul-electrico);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--azul-profundo);
+    margin-bottom: 24px;
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--azul-electrico);
+  }
+
+  /* ====== PRODUCTO ====== */
+  .producto {
+    background: var(--azul-profundo);
+    color: var(--hueso);
+    max-width: 100%;
+    padding: 120px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .producto::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(30, 95, 255, 0.3), transparent 70%);
+  }
+  .producto-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .producto .section-title { color: var(--hueso); }
+  .producto .section-eyebrow { color: var(--azul-cielo); }
+
+  .producto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 70px;
+  }
+  .feature-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px;
+    border-radius: 24px;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .feature-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-4px);
+  }
+  .feature-num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    color: var(--acento);
+    margin-bottom: 30px;
+    letter-spacing: 0.15em;
+  }
+  .feature-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .feature-card p {
+    color: rgba(244, 241, 234, 0.75);
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  /* ====== VALORES ====== */
+  .valores {
+    background: var(--hueso);
+  }
+  .valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .valor {
+    background: white;
+    padding: 36px 30px;
+    border-radius: 20px;
+    border: 1px solid var(--borde);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .valor::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--azul-electrico);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .valor:hover { transform: translateY(-4px); border-color: transparent; box-shadow: 0 20px 50px rgba(10, 31, 68, 0.08); }
+  .valor:hover::before { transform: scaleX(1); }
+  .valor-icon {
+    width: 48px; height: 48px;
+    background: var(--azul-profundo);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--hueso);
+    margin-bottom: 22px;
+  }
+  .valor h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--azul-profundo);
+    margin-bottom: 10px;
+  }
+  .valor p {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  /* ====== MISIÓN VISIÓN ====== */
+  .mision-vision {
+    background: var(--crema);
+    max-width: 100%;
+    padding: 120px 40px;
+  }
+  .mv-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .mv-card {
+    padding: 60px 50px;
+    background: var(--hueso);
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mv-card.dark {
+    background: var(--azul-profundo);
+    color: var(--hueso);
+  }
+  .mv-card .big-letter {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12rem;
+    line-height: 1;
+    position: absolute;
+    top: -30px; right: 20px;
+    color: var(--borde);
+    pointer-events: none;
+  }
+  .mv-card.dark .big-letter { color: rgba(110, 168, 255, 0.1); }
+  .mv-card .label {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: var(--azul-electrico);
+    font-weight: 600;
+    position: relative; z-index: 2;
+  }
+  .mv-card.dark .label { color: var(--azul-cielo); }
+  .mv-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 22px;
+    color: var(--azul-profundo);
+    position: relative; z-index: 2;
+  }
+  .mv-card.dark h3 { color: var(--hueso); }
+  .mv-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    position: relative; z-index: 2;
+  }
+  .mv-card.dark p { color: rgba(244, 241, 234, 0.8); }
+
+  /* ====== CÓMO FUNCIONA ====== */
+  .pasos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 70px;
+    position: relative;
+  }
+  .paso {
+    position: relative;
+    padding-top: 30px;
+  }
+  .paso-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 4rem;
+    color: var(--azul-electrico);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .paso h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--azul-profundo);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .paso p {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  /* ====== TESTIMONIO ====== */
+  .testimonio {
+    background: var(--hueso);
+    text-align: center;
+    padding: 100px 40px 80px;
+  }
+  .testimonio blockquote {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+    line-height: 1.3;
+    color: var(--azul-profundo);
+    position: relative;
+  }
+  .testimonio blockquote::before {
+    content: '"';
+    font-size: 6rem;
+    color: var(--azul-electrico);
+    position: absolute;
+    top: -50px; left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+    opacity: 0.4;
+  }
+  .testimonio cite {
+    display: block;
+    margin-top: 30px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-style: normal;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gris-suave);
+  }
+
+  /* ====== CTA FINAL ====== */
+  .cta-final {
+    background: var(--azul-profundo);
+    color: var(--hueso);
+    max-width: 100%;
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(30,95,255,0.25), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255,209,102,0.12), transparent 50%);
+  }
+  .cta-final-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+  .cta-final h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .cta-final h2 em { font-style: italic; color: var(--azul-cielo); }
+  .cta-final p {
+    font-size: 1.15rem;
+    color: rgba(244, 241, 234, 0.75);
+    margin-bottom: 40px;
+  }
+  .btn-light {
+    background: var(--hueso);
+    color: var(--azul-profundo);
+    padding: 18px 38px;
+    border: none;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-light:hover {
+    background: var(--acento);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 209, 102, 0.3);
+  }
+
+  /* ====== FOOTER ====== */
+  footer {
+    background: var(--azul-noche);
+    color: var(--hueso);
+    padding: 70px 40px 30px;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+  }
+  .footer-brand .logo { color: var(--hueso); }
+  .footer-brand p {
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: rgba(244, 241, 234, 0.6);
+    max-width: 280px;
+    line-height: 1.6;
+  }
+  .footer-col h5 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 18px;
+    color: var(--hueso);
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col a {
+    color: rgba(244, 241, 234, 0.65);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--azul-cielo); }
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.82rem;
+    color: rgba(244, 241, 234, 0.5);
+  }
+  .footer-bottom .made {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* ====== ANIMACIONES DE ENTRADA ====== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 900px) {
+    .nav-inner { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .nav-links.mobile-show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--hueso); padding: 24px; gap: 18px; border-bottom: 1px solid var(--borde); }
+    .menu-btn { display: block !important; }
+    section { padding: 70px 24px; }
+    .producto, .mision-vision, .cta-final, .testimonio { padding: 80px 24px; }
+    footer { padding: 50px 24px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 50px 24px 70px; }
+    .hero-visual { height: 480px; order: -1; }
+    .device-box { width: 260px; height: 320px; }
+    .device-phone { width: 110px; height: 220px; bottom: 20px; right: 10px; }
+    .float-tag-1, .float-tag-2 { display: none; }
+    .hero-stats { gap: 30px; }
+    .producto-grid, .mv-inner { grid-template-columns: 1fr; gap: 24px; }
+    .valores-grid { grid-template-columns: 1fr; }
+    .pasos-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px 30px; }
+    .mv-card { padding: 40px 30px; }
+    .mv-card .big-letter { font-size: 8rem; }
+  }
+  .menu-btn {
+    display: none;
+    background: none; border: none;
+    cursor: pointer;
+    color: var(--azul-profundo);
+    font-size: 1.4rem;
+  }
+  @media (max-width: 500px) {
+    .pasos-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-secondary { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== BANNER PROMOCIONAL ===== -->
+<div class="promo-banner">
+  <div class="promo-track">
+    <span><span class="dot"></span> <strong>Envío GRATIS</strong> a toda la República Mexicana</span>
+    <span><span class="dot"></span> 30 días de prueba — devuélvelo si no funciona</span>
+    <span><span class="dot"></span> Hecho en México 🇲🇽</span>
+    <span><span class="dot"></span> 3 y 6 meses sin intereses</span>
+    <span><span class="dot"></span> <strong>Envío GRATIS</strong> a toda la República Mexicana</span>
+    <span><span class="dot"></span> 30 días de prueba — devuélvelo si no funciona</span>
+    <span><span class="dot"></span> Hecho en México 🇲🇽</span>
+    <span><span class="dot"></span> 3 y 6 meses sin intereses</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">AD<span class="logo-dot"></span>One</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#producto">Producto</a></li>
+      <li><a href="#valores">Valores</a></li>
+      <li><a href="#mision-vision">Nosotros</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#cta" class="nav-cta">Comprar ahora</a></li>
+    </ul>
+    <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('mobile-show')">☰</button>
+  </div>
+</nav>
+
+<!-- ===== HERO / HOME ===== -->
+<section class="hero">
+  <div class="hero-content reveal">
+    <span class="hero-tag">Disponible en pre-venta</span>
+    <h1 class="hero-title">Guarda el celular. <em>Recupera tu día.</em></h1>
+    <p class="hero-sub">AD One es una caja inteligente que bloquea físicamente tu teléfono y se sincroniza con una app. Cuando dices que vas a estudiar, esta vez sí estudias.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Quiero el mío →</a>
+      <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4h+</div>
+        <div class="stat-label">Recuperadas al día</div>
+      </div>
+      <div>
+        <div class="stat-num">94%</div>
+        <div class="stat-label">Reportan más enfoque</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Hecho en México</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="float-tag float-tag-1">
+      <span class="icon">⚡</span> Bloqueo activo
+    </div>
+    <div class="float-tag float-tag-2">
+      <span class="icon">📱</span> App sincronizada
+    </div>
+
+    <div class="device-stage">
+      <div class="device-box">
+        <div class="device-screen">
+          <div>
+            <div class="lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#6ea8ff" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <div class="device-text">Modo enfoque<br>activado</div>
+          </div>
+          <div class="device-timer">
+            <div class="time">02:14:36</div>
+            <div class="label">Tiempo restante</div>
+          </div>
+        </div>
+        <div class="device-bottom">
+          <span>AD ONE</span>
+          <span>● ONLINE</span>
+        </div>
+      </div>
+
+      <div class="device-phone">
+        <div class="phone-screen">
+          <div class="ph-label">HOY</div>
+          <div class="ph-title">Sesión<br>de estudio</div>
+          <div class="phone-bar"><div class="phone-bar-fill"></div></div>
+          <div class="ph-label" style="font-size: 0.5rem">2h 14m / 3h 30m</div>
+          <div class="phone-stats">
+            <div class="phone-stat">
+              <div class="num">12</div>
+              <div class="lbl">SESIONES</div>
+            </div>
+            <div class="phone-stat">
+              <div class="num">87%</div>
+              <div class="lbl">META</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTO ===== -->
+<section class="producto" id="producto">
+  <div class="producto-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">El producto</div>
+      <h2 class="section-title">Hardware más software.<br><em>Una sola promesa: enfoque.</em></h2>
+      <p style="max-width: 600px; color: rgba(244, 241, 234, 0.75); font-size: 1.05rem; margin-top: 16px;">No es solo una caja. Es un sistema híbrido que combina lo mejor del mundo físico con la tecnología que ya traes en el bolsillo.</p>
+    </div>
+
+    <div class="producto-grid">
+      <div class="feature-card reveal">
+        <div class="feature-num">01 — HARDWARE</div>
+        <h3>Caja con bloqueo temporizado</h3>
+        <p>Una vez que metes el celular y activas el temporizador, no hay forma de abrirla. Sin trampas. Sin "solo voy a checar algo". El control regresa a ti cuando termina el tiempo.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">02 — SOFTWARE</div>
+        <h3>App sincronizada en tiempo real</h3>
+        <p>Programa sesiones desde tu compu, configura horarios recurrentes, mira estadísticas de cuánto tiempo enfocado llevas a la semana. Todo conectado por bluetooth.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">03 — DISEÑO</div>
+        <h3>Pensado para tu escritorio</h3>
+        <p>Lo suficientemente bonito para dejarlo a la vista. Acabados sobrios, sin pantallas chillonas. Cabe en el escritorio, en la mesa de la cocina o en la mochila para llevarlo a la biblio.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">04 — SOPORTE</div>
+        <h3>Garantía y soporte local</h3>
+        <p>Hecho en México, atendido en México. Si algo falla, hablas con personas, no con bots. Garantía de un año y refacciones disponibles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CÓMO FUNCIONA ===== -->
+<section id="como-funciona">
+  <div class="reveal">
+    <div class="section-eyebrow">Cómo funciona</div>
+    <h2 class="section-title">Cuatro pasos. <em>Cero excusas.</em></h2>
+  </div>
+
+  <div class="pasos-grid">
+    <div class="paso reveal">
+      <div class="paso-num">01</div>
+      <h4>Pones el tiempo</h4>
+      <p>Desde la app o desde la caja, eliges cuánto vas a enfocarte. 25 minutos, 2 horas, lo que necesites.</p>
+    </div>
+    <div class="paso reveal">
+      <div class="paso-num">02</div>
+      <h4>Guardas el celular</h4>
+      <p>Adentro va. Cierras la tapa. La caja se bloquea automáticamente. Listo.</p>
+    </div>
+    <div class="paso reveal">
+      <div class="paso-num">03</div>
+      <h4>Te concentras</h4>
+      <p>Sin notificaciones, sin tentaciones, sin scroll. Solo tú y lo que tienes que hacer.</p>
+    </div>
+    <div class="paso reveal">
+      <div class="paso-num">04</div>
+      <h4>Se desbloquea sola</h4>
+      <p>Cuando termina el tiempo, la caja te devuelve el teléfono. Y la app te muestra cuánto progresaste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALORES ===== -->
+<section class="valores" id="valores">
+  <div class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto;">
+    <div class="section-eyebrow">Nuestros valores</div>
+    <h2 class="section-title">En lo que <em>creemos</em></h2>
+    <p style="font-size: 1.05rem; color: #555; margin-top: 14px;">Somos un equipo de estudiantes mexicanos construyendo una empresa que queríamos que existiera. Estos son los principios que no negociamos.</p>
+  </div>
+
+  <div class="valores-grid">
+    <div class="valor reveal">
+      <div class="valor-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h4>Tu tiempo importa</h4>
+      <p>No diseñamos para que pases más tiempo con nosotros. Diseñamos para que pases más tiempo con lo que sí importa: tu carrera, tu gente, tus metas.</p>
+    </div>
+    <div class="valor reveal">
+      <div class="valor-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h4>Honestidad técnica</h4>
+      <p>Si algo no funciona, lo decimos. Si una función está en beta, lo aclaramos. Preferimos que confíes en lo que decimos a venderte humo bonito.</p>
+    </div>
+    <div class="valor reveal">
+      <div class="valor-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </div>
+      <h4>Simple, no simplón</h4>
+      <p>Una caja que bloquea un celular puede sonar tonto. Hacerlo bien, con hardware confiable y software que no falla, no lo es. Lo simple es lo más difícil.</p>
+    </div>
+    <div class="valor reveal">
+      <div class="valor-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h4>Hecho desde aquí</h4>
+      <p>Diseñado, ensamblado y soportado en México. No porque suene bonito, sino porque queremos demostrar que desde acá también se construyen productos de tecnología serios.</p>
+    </div>
+    <div class="valor reveal">
+      <div class="valor-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h4>Cuidamos a nuestra gente</h4>
+      <p>Si tienes AD One y algo sale mal, te respondemos. No tickets de soporte que tardan semanas. Hablamos directo, resolvemos directo.</p>
+    </div>
+    <div class="valor reveal">
+      <div class="valor-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      </div>
+      <h4>Tecnología con propósito</h4>
+      <p>No creemos en hacer apps adictivas. Creemos en construir herramientas que te devuelvan algo. La tecnología debería trabajar para ti, no al revés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISIÓN VISIÓN ===== -->
+<section class="mision-vision" id="mision-vision">
+  <div class="mv-inner">
+    <div class="mv-card reveal">
+      <div class="big-letter">M</div>
+      <div class="label">Nuestra misión</div>
+      <h3>Devolverle a las personas el control de su atención.</h3>
+      <p>Diseñamos soluciones híbridas que combinan hardware y software para ayudar a estudiantes, profesionistas y familias a recuperar el tiempo que les roba la distracción digital. No queremos que dejes el celular. Queremos que lo uses cuando tú decidas, no cuando él decida.</p>
+    </div>
+
+    <div class="mv-card dark reveal">
+      <div class="big-letter">V</div>
+      <div class="label">Nuestra visión</div>
+      <h3>Ser la marca mexicana de referencia en tecnología para el bienestar digital.</h3>
+      <p>Imaginamos un país donde los estudiantes terminan sus tesis a tiempo, los profesionistas cierran la laptop a la hora correcta y los papás cenan con sus hijos sin pantallas en la mesa. AD One es solo el primer paso. Queremos construir un ecosistema completo de productos pensados para gente real, en mercados reales, empezando por México.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIO ===== -->
+<section class="testimonio">
+  <div class="reveal">
+    <blockquote>
+      Llevaba meses diciendo que iba a estudiar y terminaba dos horas después en TikTok. La caja suena ridícula hasta que la usas. La primera semana ya había avanzado más que en todo el mes anterior.
+    </blockquote>
+    <cite>— Daniela R., estudiante de ingeniería</cite>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final" id="cta">
+  <div class="cta-final-inner reveal">
+    <h2>Pídela hoy. <em>Te llega gratis.</em></h2>
+    <p>Envío sin costo a toda la República Mexicana. Si no te funciona en 30 días, te devolvemos tu dinero sin preguntas raras.</p>
+    <button class="btn-light">Reservar mi AD One →</button>
+    <p style="margin-top: 24px; font-size: 0.85rem; opacity: 0.6;">A partir de $1,499 MXN · Meses sin intereses disponibles</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">AD<span class="logo-dot"></span>One</div>
+      <p>Sistema híbrido anti-distracción. Diseñado y ensamblado en México por un equipo de estudiantes de mecatrónica.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Producto</h5>
+      <ul>
+        <li><a href="#producto">Características</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#cta">Comprar</a></li>
+        <li><a href="#">Soporte técnico</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="#mision-vision">Nosotros</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Garantía</a></li>
+        <li><a href="#">Devoluciones</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 AD One. Todos los derechos reservados.</div>
+    <div class="made">Hecho con enfoque en Guadalajara, México 🇲🇽</div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth nav close on click (mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('mobile-show');
+    });
+  });
+</script>
+
+</body>
+</html>
