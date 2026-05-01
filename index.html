@@ -94,14 +94,14 @@
     align-items: center;
   }
   .logo {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 1.6rem;
-    letter-spacing: -0.02em;
-    color: var(--azul-profundo);
     display: flex;
-    align-items: baseline;
-    gap: 4px;
+    align-items: center;
+    text-decoration: none;
+  }
+  .logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
   }
   .logo-dot {
     width: 8px; height: 8px;
@@ -834,6 +834,21 @@
     margin-bottom: 50px;
   }
   .footer-brand .logo { color: var(--hueso); }
+  .logo-img-footer {
+    height: 56px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 18px;
+  }
+  .footer-slogan {
+    font-family: 'Fraunces', serif !important;
+    font-style: italic;
+    font-size: 1.2rem !important;
+    color: var(--azul-cielo) !important;
+    line-height: 1.3 !important;
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
+    max-width: none !important;
+  }
   .footer-brand p {
     margin-top: 18px;
     font-size: 0.9rem;
@@ -944,7 +959,7 @@
 <!-- ===== NAV ===== -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">AD<span class="logo-dot"></span>One</a>
+    <a href="#" class="logo"><img src="logo-adone.png" alt="AD One" class="logo-img" /></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#producto">Producto</a></li>
       <li><a href="#valores">Valores</a></li>
@@ -960,7 +975,7 @@
 <section class="hero">
   <div class="hero-content reveal">
     <span class="hero-tag">Disponible en pre-venta</span>
-    <h1 class="hero-title">Guarda el celular. <em>Recupera tu día.</em></h1>
+    <h1 class="hero-title">Menos teléfono. <em>Más de lo que importa.</em></h1>
     <p class="hero-sub">AD One es una caja inteligente que bloquea físicamente tu teléfono y se sincroniza con una app. Cuando dices que vas a estudiar, esta vez sí estudias.</p>
     <div class="hero-actions">
       <a href="#cta" class="btn-primary">Quiero el mío →</a>
@@ -1173,16 +1188,6 @@
   </div>
 </section>
 
-<!-- ===== TESTIMONIO ===== -->
-<section class="testimonio">
-  <div class="reveal">
-    <blockquote>
-      Llevaba meses diciendo que iba a estudiar y terminaba dos horas después en TikTok. La caja suena ridícula hasta que la usas. La primera semana ya había avanzado más que en todo el mes anterior.
-    </blockquote>
-    <cite>— Daniela R., estudiante de ingeniería</cite>
-  </div>
-</section>
-
 <!-- ===== CTA FINAL ===== -->
 <section class="cta-final" id="cta">
   <div class="cta-final-inner reveal">
@@ -1197,7 +1202,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="logo">AD<span class="logo-dot"></span>One</div>
+      <div class="logo"><img src="logo-adone.png" alt="AD One" class="logo-img logo-img-footer" /></div>
+      <p class="footer-slogan">Menos teléfono.<br>Más de lo que importa.</p>
       <p>Sistema híbrido anti-distracción. Diseñado y ensamblado en México por un equipo de estudiantes de mecatrónica.</p>
     </div>
     <div class="footer-col">
